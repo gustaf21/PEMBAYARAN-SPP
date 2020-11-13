@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ judulhalaman}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdnv9.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<style>
+  body {
+    background-image: url('');
+    background-size: cover;
+  }
+  </style>
+</head>
+<body>  
+      <nav class="navbar navbar-light bg-dark">
+<a href="/">LOGIN</a>
+
+  <a href="/data">DATA PEMBAYARAN</a>
+  <a href="/logout">LOG OUT</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+<h1>DATA PEMBAYARAN</h1>    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID PEMBAYARAN</th>
+                <th>SISWA</th>
+                <th>BULAN</th>
+                <th>JUMLAH</th>
+                <th>TANGGAL TRANSAKSI</th>
+                <th>BUKAN SIHIR!</th>
+            </tr>
+        </thead>
+        <tbody class="table table-active">
+            {{#each data}}
+            <tr>
+                <td>{{ id_pembayaran }}</td>
+                 <td>{{ siswa }}</td>
+                <td>{{ bulan }}</td>
+                <td>{{ jumlah }}</td>
+                <td>{{ tanggal_transaksi }}</td>
+             <td><a href="/hapus-siswa/{{ siswa }}"><button>SULAP!</button></a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  INPUT DATA PEMBAYARAN!
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+       <form action="/data" method="POST"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">INPUT PEMBAYARAN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         
+    <input type="text" name="inputsiswa" placeholder="SISWA">
+    <input type="text" name="inputbulan" placeholder="BULAN">
+    <input type="text" name="inputjumlah" placeholder="JUMLAH">
+    <input type="date" name="inputtanggal_transaksi" placeholder="TANGGAL TRANSAKSI">
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">SIMPAN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>
